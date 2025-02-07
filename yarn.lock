@@ -4680,6 +4680,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-image@npm:~2.0.4":
+  version: 2.0.4
+  resolution: "expo-image@npm:2.0.4"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+    react-native-web: "*"
+  peerDependenciesMeta:
+    react-native-web:
+      optional: true
+  checksum: 10/8830877919b4e09e3dfa099133fd956275cef7ca6765977e8de1232f17c78eaaff9f444f8ba15bb6338972c57ad5f629f96ffe5a1e56e4ebbaca56309c05c3fa
+  languageName: node
+  linkType: hard
+
 "expo-keep-awake@npm:~14.0.1":
   version: 14.0.1
   resolution: "expo-keep-awake@npm:14.0.1"
@@ -5476,6 +5491,7 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^12.1.0"
     eslint-plugin-unused-imports: "npm:^3.2.0"
     expo: "npm:~52.0.24"
+    expo-image: "npm:~2.0.4"
     expo-status-bar: "npm:~2.0.0"
     prettier: "npm:^3.4.2"
     react: "npm:18.3.1"
