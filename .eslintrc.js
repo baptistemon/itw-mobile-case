@@ -17,6 +17,12 @@ module.exports = defineConfig({
             importNames: ['StyleSheet'],
             message: "Use 'StyleSheet' from 'react-native-unistyles' instead",
           },
+          {
+            name: 'expo-status-bar',
+            importNames: ['StatusBar'],
+            message:
+              "Use 'SystemBars' from 'react-native-edge-to-edge' instead",
+          },
         ],
       },
     ],
