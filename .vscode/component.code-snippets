@@ -1,0 +1,18 @@
+{
+  "Create component": {
+    "scope": "javascript,typescript,typescriptreact", // Specify the languages in which the snippet is active
+    "prefix": "component",
+    "body": [
+      "import { View } from 'react-native';",
+      "",
+      "type ${TM_FILENAME_BASE}Props = {};",
+      "",
+      "export const ${TM_FILENAME_BASE} = ({}: ${TM_FILENAME_BASE}Props) => {",
+      "",
+      "  return <View  />;",
+      "};",
+      "",
+    ],
+    "description": "Creates a React Native component",
+  },
+}
