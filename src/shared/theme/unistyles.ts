@@ -13,6 +13,7 @@ export const unistylesTheme = {
     xl: 40,
     xxl: 48,
   },
+  radius: { xs: 8 },
   colors,
 };
 
