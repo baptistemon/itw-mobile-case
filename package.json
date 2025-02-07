@@ -16,6 +16,7 @@
     "react-native": "0.76.5",
     "react-native-edge-to-edge": "^1.4.3",
     "react-native-nitro-modules": "^0.22.1",
+    "react-native-reanimated": "~3.16.1",
     "react-native-unistyles": "3.0.0-beta.6"
   },
   "devDependencies": {
