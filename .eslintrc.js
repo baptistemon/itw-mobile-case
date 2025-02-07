@@ -8,6 +8,18 @@ module.exports = defineConfig({
     'plugin:@bam.tech/recommended',
   ],
   rules: {
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'react-native',
+            importNames: ['StyleSheet'],
+            message: "Use 'StyleSheet' from 'react-native-unistyles' instead",
+          },
+        ],
+      },
+    ],
     'react/self-closing-comp': 'error',
   },
   ignorePatterns: ['expo-env.d.ts'],
