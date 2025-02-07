@@ -39,3 +39,6 @@ app-example
 
 # yarn
 .yarn/*
+
+# cache
+.cache
