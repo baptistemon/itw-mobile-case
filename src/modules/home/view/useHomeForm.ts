@@ -8,7 +8,7 @@ import * as z from 'zod';
 import { sleep } from '#shared/utils/sleep';
 
 const formSchema = z.object({
-  amount: z.string().regex(/\d+(\.|,)\d{2}$/),
+  amount: z.string().regex(/\d+((\.|,)(\d{1}|\d{2}))?$/),
   phoneNumber: z.string().regex(/\d{2} \d{2} \d{2} \d{2} \d{2}$/),
   splitPayment: z.object({ label: z.string(), value: z.string() }),
 });
