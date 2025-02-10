@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 import { View } from 'react-native';
-import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 
@@ -29,9 +29,10 @@ export const Home = () => {
 
   return (
     <Background>
-      <KeyboardAvoidingView
-        behavior="padding"
-        style={styles.keyboardAvoidingContainer}
+      <KeyboardAwareScrollView
+        contentContainerStyle={styles.KeyboardAwareScrollViewContentContainer}
+        bounces={false}
+        keyboardShouldPersistTaps={'handled'}
       >
         <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
           <View style={styles.formContainer}>
@@ -88,7 +89,7 @@ export const Home = () => {
             />
           </View>
         </SafeAreaView>
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     </Background>
   );
 };
@@ -110,5 +111,5 @@ const styles = StyleSheet.create((theme) => ({
   buttonContainer: {
     width: '100%',
   },
-  keyboardAvoidingContainer: { flex: 1 },
+  KeyboardAwareScrollViewContentContainer: { flex: 1 },
 }));
