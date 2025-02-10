@@ -1,22 +1,77 @@
-import { Text, View } from 'react-native';
+import { useIntl } from 'react-intl';
+import { View } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 
 import { Background } from '#shared/view/Background/Background';
+import { Button } from '#shared/view/Button/Button';
+import { HeroLogo } from '#shared/view/HeroLogo/HeroLogo';
+import type { RadioButtonData } from '#shared/view/RadioButtons/RadioButtons';
+import { RadioButtons } from '#shared/view/RadioButtons/RadioButtons';
+import { TextInput } from '#shared/view/TextInput/TextInput';
+
+const RADIO_BUTTONS_DATA: RadioButtonData[] = [
+  { label: 'P1X', value: '1' },
+  { label: 'P3X', value: '3' },
+  { label: 'P4X', value: '4' },
+];
 
 export const Home = () => {
+  const intl = useIntl();
   return (
     <Background>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={styles.keyboardAvoidingContainer}
+      >
+        <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
+          <View style={styles.formContainer}>
+            <View style={styles.logoContainer}>
+              <HeroLogo sizeRatio={0.4} />
+            </View>
+            <TextInput
+              placeholder={intl.formatMessage({ id: 'amount.placeholder' })}
+            />
+            <TextInput
+              placeholder={intl.formatMessage({
+                id: 'phoneNumber.placeholder',
+              })}
+            />
+            <RadioButtons
+              buttonsData={RADIO_BUTTONS_DATA}
+              select={() => null}
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              label={intl.formatMessage({ id: 'send.link' })}
+              onPress={() => null}
+              disabled
+            />
+          </View>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
     </Background>
   );
 };
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create((theme) => ({
   container: {
+    paddingHorizontal: theme.spacing.s,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
-});
+  formContainer: {
+    alignItems: 'center',
+    width: '100%',
+    gap: theme.spacing.l,
+  },
+  logoContainer: {
+    paddingVertical: theme.spacing.s,
+  },
+  buttonContainer: {
+    width: '100%',
+  },
+  keyboardAvoidingContainer: { flex: 1 },
+}));

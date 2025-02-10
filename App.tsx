@@ -1,4 +1,5 @@
 import { SystemBars } from 'react-native-edge-to-edge';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { IntlProvider } from '#app/i18n/IntlProvider';
@@ -9,8 +10,10 @@ export default function App() {
   return (
     <IntlProvider>
       <SafeAreaProvider>
-        <SystemBars style={'auto'} />
-        <Home />
+        <KeyboardProvider>
+          <SystemBars style={'auto'} />
+          <Home />
+        </KeyboardProvider>
       </SafeAreaProvider>
     </IntlProvider>
   );
