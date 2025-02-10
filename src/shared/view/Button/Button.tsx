@@ -40,5 +40,6 @@ const styles = StyleSheet.create((theme) => ({
   }),
   text: (textColor?: string) => ({
     color: textColor ?? theme.colors.white,
+    fontWeight: 'bold',
   }),
 }));
