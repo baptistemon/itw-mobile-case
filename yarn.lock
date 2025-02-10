@@ -4705,6 +4705,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-linear-gradient@npm:~14.0.2":
+  version: 14.0.2
+  resolution: "expo-linear-gradient@npm:14.0.2"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  checksum: 10/73471a435fa720137c5bb16ddc699c64181101db081cd4ff892b383e9f047db56039fd1235f3570dd2fccd099214230f98405963c9c8afc32891c43eabae2c60
+  languageName: node
+  linkType: hard
+
 "expo-modules-autolinking@npm:2.0.4":
   version: 2.0.4
   resolution: "expo-modules-autolinking@npm:2.0.4"
@@ -5492,6 +5503,7 @@ __metadata:
     eslint-plugin-unused-imports: "npm:^3.2.0"
     expo: "npm:~52.0.24"
     expo-image: "npm:~2.0.4"
+    expo-linear-gradient: "npm:~14.0.2"
     expo-status-bar: "npm:~2.0.0"
     prettier: "npm:^3.4.2"
     react: "npm:18.3.1"
