@@ -5498,6 +5498,7 @@ __metadata:
     react-intl: "npm:^7.1.5"
     react-native: "npm:0.76.5"
     react-native-edge-to-edge: "npm:^1.4.3"
+    react-native-keyboard-controller: "npm:^1.16.3"
     react-native-nitro-modules: "npm:^0.22.1"
     react-native-reanimated: "npm:~3.16.1"
     react-native-safe-area-context: "npm:4.12.0"
@@ -8157,6 +8158,29 @@ __metadata:
     react: ">=18.2.0"
     react-native: ">=0.74.0"
   checksum: 10/aada44f6d6daf08811a54a552af610652e29ccbad6de38d876919751ab064947f0db0b91acd3d96e6d521947be10a74683c0f3d6f12e158c7e331fe6b3807307
+  languageName: node
+  linkType: hard
+
+"react-native-is-edge-to-edge@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "react-native-is-edge-to-edge@npm:1.1.6"
+  peerDependencies:
+    react: ">=18.2.0"
+    react-native: ">=0.73.0"
+  checksum: 10/4e07c1e34c01c8d50fd7c1d0460db06f6f0515197405230386a8ffb950cb724b10743af032310d1384df0a90059bfb8992ba2d93344ce86315315f0493feccc2
+  languageName: node
+  linkType: hard
+
+"react-native-keyboard-controller@npm:^1.16.3":
+  version: 1.16.3
+  resolution: "react-native-keyboard-controller@npm:1.16.3"
+  dependencies:
+    react-native-is-edge-to-edge: "npm:^1.1.6"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-reanimated: ">=3.0.0"
+  checksum: 10/089a0bafea2f77d3cd1b5005ee1b285ba865b854d71c422d761c965986362c915f4170f8da9002ac422a08359258b49c924596fa6bb8c9ce737aec3532705c77
   languageName: node
   linkType: hard
 
