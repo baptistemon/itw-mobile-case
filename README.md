@@ -13,4 +13,23 @@ For complete details about the technical test requirements and specifications, p
 
 ## Getting Started
 
-Instructions for setting up and running the project will be added soon.
+As there are some native modules, the project can only be launch using development build.
+
+Install dependencies.
+
+```
+yarn
+```
+
+Prebuild the project to create ios and android folder.
+
+```
+yarn expo prebuild
+```
+
+Build iOS and Android.
+
+```
+yarn ios
+yarn android
+```
