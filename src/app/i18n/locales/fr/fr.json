@@ -1,1 +1,5 @@
-{}
+{
+  "amount.placeholder": "Montant (€)",
+  "phoneNumber.placeholder": "Numéro de téléphone",
+  "send.link": "Envoyer le lien de paiement"
+}
