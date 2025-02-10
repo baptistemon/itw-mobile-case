@@ -1,24 +1,40 @@
 import { View } from 'react-native';
-import { StyleSheet } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { Button } from '#shared/view/Button/Button';
 
-type RadioButtonData = { label: string; value: string };
+export type RadioButtonData = { label: string; value: string };
 
 type RadioButtonsProps = {
   buttonsData: RadioButtonData[];
-  select: (value: string) => void;
+  select: (value: RadioButtonData) => void;
+  selectedButton?: RadioButtonData;
 };
 
-export const RadioButtons = ({ buttonsData, select }: RadioButtonsProps) => {
+export const RadioButtons = ({
+  buttonsData,
+  select,
+  selectedButton,
+}: RadioButtonsProps) => {
+  const { theme } = useUnistyles();
   return (
     <View style={styles.container}>
       {buttonsData.map((buttonData) => (
         <View key={buttonData.label} style={styles.singleButtonContainer}>
           <Button
+            color={
+              selectedButton?.label === buttonData.label
+                ? theme.colors.purple
+                : theme.colors.white
+            }
+            textColor={
+              selectedButton?.label === buttonData.label
+                ? theme.colors.white
+                : theme.colors.darkGray
+            }
             label={buttonData.label}
             onPress={() => {
-              select(buttonData.value);
+              select(buttonData);
             }}
           />
         </View>
