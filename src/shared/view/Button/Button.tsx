@@ -1,5 +1,6 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import { Text } from 'react-native';
-import { StyleSheet } from 'react-native-unistyles';
+import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { PressableWithFeedback } from '#shared/view/PressableWithFeedback/PressableWithFeedback';
 
@@ -18,13 +19,26 @@ export const Button = ({
   color,
   textColor,
 }: ButtonProps) => {
+  const { theme } = useUnistyles();
   return (
     <PressableWithFeedback
       onPress={onPress}
       style={styles.button(disabled, color)}
       disabled={disabled}
     >
-      <Text style={styles.text(textColor)}>{label}</Text>
+      {color ? (
+        <Text style={styles.text(textColor)}>{label}</Text>
+      ) : (
+        <>
+          <LinearGradient
+            colors={[theme.colors.purpleLight, theme.colors.purpleDarken]}
+            style={styles.gradient}
+            start={[0, 1]}
+            end={[1, 0]}
+          />
+          <Text style={styles.text(textColor)}>{label}</Text>
+        </>
+      )}
     </PressableWithFeedback>
   );
 };
@@ -34,12 +48,20 @@ const styles = StyleSheet.create((theme) => ({
     opacity: disabled ? 0.6 : 1,
     paddingHorizontal: theme.spacing.l,
     paddingVertical: theme.spacing.s,
-    backgroundColor: color ?? theme.colors.purple,
+    backgroundColor: color,
     borderRadius: theme.radius.xs,
     alignItems: 'center',
+    overflow: 'hidden',
   }),
   text: (textColor?: string) => ({
     color: textColor ?? theme.colors.white,
     fontWeight: 'bold',
   }),
+  gradient: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
 }));
