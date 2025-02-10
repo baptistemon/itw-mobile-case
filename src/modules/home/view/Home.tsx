@@ -1,3 +1,4 @@
+import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 import { View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
@@ -19,6 +20,11 @@ const RADIO_BUTTONS_DATA: RadioButtonData[] = [
 
 export const Home = () => {
   const intl = useIntl();
+
+  const { control } = useForm({
+    defaultValues: { amount: '', phoneNumber: '', splitPayment: undefined },
+  });
+
   return (
     <Background>
       <KeyboardAvoidingView
@@ -30,17 +36,40 @@ export const Home = () => {
             <View style={styles.logoContainer}>
               <HeroLogo sizeRatio={0.4} />
             </View>
-            <TextInput
-              placeholder={intl.formatMessage({ id: 'amount.placeholder' })}
+            <Controller
+              name="amount"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <TextInput
+                  placeholder={intl.formatMessage({ id: 'amount.placeholder' })}
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
             />
-            <TextInput
-              placeholder={intl.formatMessage({
-                id: 'phoneNumber.placeholder',
-              })}
+            <Controller
+              name="phoneNumber"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <TextInput
+                  placeholder={intl.formatMessage({
+                    id: 'phoneNumber.placeholder',
+                  })}
+                  onChangeText={onChange}
+                  value={value}
+                />
+              )}
             />
-            <RadioButtons
-              buttonsData={RADIO_BUTTONS_DATA}
-              select={() => null}
+            <Controller
+              name="splitPayment"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <RadioButtons
+                  buttonsData={RADIO_BUTTONS_DATA}
+                  select={onChange}
+                  selectedButton={value}
+                />
+              )}
             />
           </View>
           <View style={styles.buttonContainer}>
