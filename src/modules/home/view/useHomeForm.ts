@@ -18,6 +18,11 @@ type FormInput = z.infer<typeof formSchema>;
 export const useHomeForm = () => {
   const intl = useIntl();
 
+  const { control, formState, handleSubmit, reset } = useForm<FormInput>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { amount: '', phoneNumber: '', splitPayment: undefined },
+  });
+
   const onSubmit = useCallback(
     async (data: FormInput) => {
       await sleep(1500);
@@ -32,14 +37,10 @@ export const useHomeForm = () => {
           },
         ),
       );
+      reset();
     },
-    [intl],
+    [intl, reset],
   );
-
-  const { control, formState, handleSubmit } = useForm<FormInput>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { amount: '', phoneNumber: '', splitPayment: undefined },
-  });
 
   return {
     control,
