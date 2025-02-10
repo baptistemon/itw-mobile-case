@@ -1,11 +1,14 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 import { View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
+import * as z from 'zod';
 
 import { formatAmount } from '#shared/utils/formatAmount';
+import { formatPhoneNumber } from '#shared/utils/formatPhoneNumber';
 import { Background } from '#shared/view/Background/Background';
 import { Button } from '#shared/view/Button/Button';
 import { HeroLogo } from '#shared/view/HeroLogo/HeroLogo';
@@ -19,10 +22,19 @@ const RADIO_BUTTONS_DATA: RadioButtonData[] = [
   { label: 'P4X', value: '4' },
 ];
 
+const formSchema = z.object({
+  amount: z.string().regex(/\d+(\.|,)\d{2}$/),
+  phoneNumber: z.string().regex(/\d{2} \d{2} \d{2} \d{2} \d{2}$/),
+  splitPayment: z.object({ label: z.string(), value: z.string() }),
+});
+
+type FormInput = z.infer<typeof formSchema>;
+
 export const Home = () => {
   const intl = useIntl();
 
-  const { control } = useForm({
+  const { control, formState } = useForm<FormInput>({
+    resolver: zodResolver(formSchema),
     defaultValues: { amount: '', phoneNumber: '', splitPayment: undefined },
   });
 
@@ -82,7 +94,7 @@ export const Home = () => {
             <Button
               label={intl.formatMessage({ id: 'send.link' })}
               onPress={() => null}
-              disabled
+              disabled={!formState.isDirty || !formState.isValid}
             />
           </View>
         </SafeAreaView>
