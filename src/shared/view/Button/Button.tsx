@@ -1,5 +1,5 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Text } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 import { StyleSheet, useUnistyles } from 'react-native-unistyles';
 
 import { PressableWithFeedback } from '#shared/view/PressableWithFeedback/PressableWithFeedback';
@@ -8,6 +8,7 @@ type ButtonProps = {
   label: string;
   onPress: () => void;
   disabled?: boolean;
+  isLoading?: boolean;
   color?: string;
   textColor?: string;
 };
@@ -18,6 +19,7 @@ export const Button = ({
   disabled,
   color,
   textColor,
+  isLoading,
 }: ButtonProps) => {
   const { theme } = useUnistyles();
   return (
@@ -27,7 +29,11 @@ export const Button = ({
       disabled={disabled}
     >
       {color ? (
-        <Text style={styles.text(textColor)}>{label}</Text>
+        <ButtonContent
+          label={label}
+          isLoading={isLoading}
+          textColor={textColor}
+        />
       ) : (
         <>
           <LinearGradient
@@ -36,11 +42,29 @@ export const Button = ({
             start={[0, 1]}
             end={[1, 0]}
           />
-          <Text style={styles.text(textColor)}>{label}</Text>
+          <ButtonContent
+            label={label}
+            isLoading={isLoading}
+            textColor={textColor}
+          />
         </>
       )}
     </PressableWithFeedback>
   );
+};
+
+type ButtonContentProps = {
+  label: string;
+  isLoading?: boolean;
+  textColor?: string;
+};
+
+const ButtonContent = ({ label, textColor, isLoading }: ButtonContentProps) => {
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
+  return <Text style={styles.text(textColor)}>{label}</Text>;
 };
 
 const styles = StyleSheet.create((theme) => ({

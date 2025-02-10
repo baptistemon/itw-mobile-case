@@ -115,6 +115,7 @@ export const Home = () => {
               label={intl.formatMessage({ id: 'send.link' })}
               onPress={handleSubmit(onSubmit)}
               disabled={!formState.isDirty || !formState.isValid}
+              isLoading={formState.isSubmitting}
             />
           </View>
         </SafeAreaView>
