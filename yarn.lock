@@ -5507,6 +5507,7 @@ __metadata:
     expo-status-bar: "npm:~2.0.0"
     prettier: "npm:^3.4.2"
     react: "npm:18.3.1"
+    react-hook-form: "npm:^7.54.2"
     react-intl: "npm:^7.1.5"
     react-native: "npm:0.76.5"
     react-native-edge-to-edge: "npm:^1.4.3"
@@ -8124,6 +8125,15 @@ __metadata:
     shell-quote: "npm:^1.6.1"
     ws: "npm:^7"
   checksum: 10/640123f775daeb2176ebc9caf85b1cb9dbb147cbb607f221254ac4967530ddf96332a582d5b169c840984220596a23780ed6f9b37c37461160e9b623f5f4caee
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.54.2":
+  version: 7.54.2
+  resolution: "react-hook-form@npm:7.54.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 10/b156d15b6246c76d0275e5722d9056014693e014d0e3dec06e44bf2672ee549aaba4366de5144d18c4cab29e631f3b2b84269d4fd5727ca17aad9b970fde6960
   languageName: node
   linkType: hard
 
