@@ -57,8 +57,12 @@ export const Home = () => {
                   placeholder={intl.formatMessage({
                     id: 'phoneNumber.placeholder',
                   })}
-                  onChangeText={onChange}
+                  onChangeText={(text: string) =>
+                    onChange(formatPhoneNumber(text))
+                  }
                   value={value}
+                  keyboardType="phone-pad"
+                  maxLength={14}
                 />
               )}
             />
