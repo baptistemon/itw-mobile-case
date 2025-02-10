@@ -5,6 +5,7 @@ import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
 
+import { formatAmount } from '#shared/utils/formatAmount';
 import { Background } from '#shared/view/Background/Background';
 import { Button } from '#shared/view/Button/Button';
 import { HeroLogo } from '#shared/view/HeroLogo/HeroLogo';
@@ -42,8 +43,9 @@ export const Home = () => {
               render={({ field: { onChange, value } }) => (
                 <TextInput
                   placeholder={intl.formatMessage({ id: 'amount.placeholder' })}
-                  onChangeText={onChange}
+                  onChangeText={(text: string) => onChange(formatAmount(text))}
                   value={value}
+                  keyboardType="decimal-pad"
                 />
               )}
             />
