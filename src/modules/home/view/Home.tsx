@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
@@ -47,7 +47,9 @@ export const Home = () => {
                   placeholder={intl.formatMessage({ id: 'amount.placeholder' })}
                   onChangeText={(text: string) => onChange(formatAmount(text))}
                   value={value}
-                  keyboardType="decimal-pad"
+                  keyboardType={
+                    Platform.OS === 'android' ? 'number-pad' : 'decimal-pad'
+                  }
                 />
               )}
             />
