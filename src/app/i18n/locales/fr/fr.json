@@ -1,5 +1,7 @@
 {
   "amount.placeholder": "Montant (€)",
   "phoneNumber.placeholder": "Numéro de téléphone",
-  "send.link": "Envoyer le lien de paiement"
+  "send.link": "Envoyer le lien de paiement",
+  "link.sended": "Lien de paiement envoyé",
+  "payment": "Votre lien de paiement d'un montant de {amount} € en {splitPayment} fois a été envoyé au {phoneNumber}"
 }

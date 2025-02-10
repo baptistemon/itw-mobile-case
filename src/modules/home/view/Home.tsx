@@ -1,7 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { KeyboardAvoidingView } from 'react-native-keyboard-controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native-unistyles';
@@ -9,6 +10,7 @@ import * as z from 'zod';
 
 import { formatAmount } from '#shared/utils/formatAmount';
 import { formatPhoneNumber } from '#shared/utils/formatPhoneNumber';
+import { sleep } from '#shared/utils/sleep';
 import { Background } from '#shared/view/Background/Background';
 import { Button } from '#shared/view/Button/Button';
 import { HeroLogo } from '#shared/view/HeroLogo/HeroLogo';
@@ -33,7 +35,25 @@ type FormInput = z.infer<typeof formSchema>;
 export const Home = () => {
   const intl = useIntl();
 
-  const { control, formState } = useForm<FormInput>({
+  const onSubmit = useCallback(
+    async (data: FormInput) => {
+      await sleep(1500);
+      Alert.alert(
+        intl.formatMessage({ id: 'link.sended' }),
+        intl.formatMessage(
+          { id: 'payment' },
+          {
+            amount: data.amount,
+            phoneNumber: data.phoneNumber,
+            splitPayment: data.splitPayment.value,
+          },
+        ),
+      );
+    },
+    [intl],
+  );
+
+  const { control, formState, handleSubmit } = useForm<FormInput>({
     resolver: zodResolver(formSchema),
     defaultValues: { amount: '', phoneNumber: '', splitPayment: undefined },
   });
@@ -93,7 +113,7 @@ export const Home = () => {
           <View style={styles.buttonContainer}>
             <Button
               label={intl.formatMessage({ id: 'send.link' })}
-              onPress={() => null}
+              onPress={handleSubmit(onSubmit)}
               disabled={!formState.isDirty || !formState.isValid}
             />
           </View>
